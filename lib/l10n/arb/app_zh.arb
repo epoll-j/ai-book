@@ -1,0 +1,11 @@
+{
+    "@@locale": "zh",
+    "tabBarItemProfile": "我的",
+    "tabBarItemLibrary": "书库",
+    "continueListen": "最近阅读",
+    "savedForLater": "稍后阅读",
+    "summary": "总结",
+    "whatsInside": "简介",
+    "read": "阅读",
+    "listen": "播放"
+}
