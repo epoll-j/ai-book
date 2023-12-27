@@ -1,13 +1,12 @@
+import 'package:ai_book/components/basic/basic_content.dart';
+import 'package:ai_book/components/basic/basic_scaffold.dart';
 import 'package:ai_book/l10n/l10n.dart';
-
+import 'package:ai_book/page/book/view/book_page.dart';
+import 'package:ai_book/page/library/cubit/library_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-
-import 'package:ai_book/page/library/cubit/library_cubit.dart';
-
-import 'package:ai_book/page/book/view/book_page.dart';
 
 class LibraryPage extends StatelessWidget {
   const LibraryPage({super.key});

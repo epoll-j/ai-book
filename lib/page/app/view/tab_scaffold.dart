@@ -1,9 +1,8 @@
-
+import 'package:ai_book/components/basic/basic_scaffold.dart';
 import 'package:ai_book/l10n/l10n.dart';
+import 'package:ai_book/page/library/view/library_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'package:ai_book/page/library/view/library_page.dart';
 
 class TabBarItem {
   TabBarItem(this.title, this.icon, this.page);

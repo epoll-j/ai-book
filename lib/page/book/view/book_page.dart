@@ -1,9 +1,9 @@
 
+import 'package:ai_book/components/basic/basic_scaffold.dart';
 import 'package:ai_book/l10n/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class BookPage extends StatelessWidget {
   const BookPage({super.key});
