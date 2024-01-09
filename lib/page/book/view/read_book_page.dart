@@ -1,10 +1,8 @@
 import 'package:ai_book/components/basic/basic_scaffold.dart';
-import 'package:ai_book/l10n/l10n.dart';
 import 'package:ai_book/page/book/cubit/book_cubit.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ReadBookPage extends StatelessWidget {
   const ReadBookPage({super.key});
@@ -20,8 +18,11 @@ class ReadBookPage extends StatelessWidget {
   Widget _buildPage(BuildContext context) {
     return BasicScaffold(
       appBar: SliverAppBar(
-        leading: Icon(Icons.close, color: CupertinoColors.black,),
-        title: Text('wocaonimab'),
+        leading: const Icon(
+          Icons.close,
+          color: CupertinoColors.black,
+        ),
+        title: Text('title'),
         centerTitle: false,
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1.0), // 分割线的高度
@@ -32,203 +33,82 @@ class ReadBookPage extends StatelessWidget {
         ),
       ),
       children: [
-        _buildBookCover(context),
-        _buildInside(context),
-        _buildBottomButton(context),
+        _buildContent(context),
+        _buildContent(context),
+        _buildContent(context)
       ],
     );
   }
 
-  Widget _buildBookCover(BuildContext context) {
-    const defaultSizeBox = SizedBox(
-      height: 10,
-    );
-    final l10 = context.l10n;
-
-    return Padding(
-      padding: const EdgeInsets.only(top: 15),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
+  Widget _buildContent(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 20),
+      child: Column(
         children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.of(context).pop();
-            },
-            child: Container(
-              padding: const EdgeInsets.all(5),
-              decoration: const BoxDecoration(
-                color: CupertinoColors.systemGrey,
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-              ),
-              child: const Icon(
-                Icons.close,
-                color: CupertinoColors.systemBackground,
-              ),
-            ),
+          Text(
+            'Altering belief must precede the modification of behavior. Who you are is more important than what you do. If a habit becomes a part of your personality, the chances of you maintaining it are much higher.',
+            style: Theme.of(context).textTheme.bodyLarge,
           ),
-          Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 20),
-                width: 220.w,
-                height: 220.w * 1.5,
-                decoration: const BoxDecoration(
-                  borderRadius:
-                  BorderRadius.all(Radius.circular(15)), // 设置圆角的半径
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        'https://upload-images.jianshu.io/upload_images/5809200-a99419bb94924e6d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240'),
-                    fit: BoxFit.cover, // 根据需要选择合适的fit类型
-                  ),
-                ),
-              ),
-              defaultSizeBox,
-              SizedBox(
-                width: 220.w,
-                height: 5,
-                child: const LinearProgressIndicator(
-                  value: .5,
-                  backgroundColor: CupertinoColors.lightBackgroundGray,
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                  valueColor:
-                  AlwaysStoppedAnimation(CupertinoColors.activeBlue),
-                ),
-              ),
-              defaultSizeBox,
-              Text(
-                l10.summary,
-                style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Theme.of(context)
-                        .textTheme
-                        .headlineSmall
-                        ?.color
-                        ?.withOpacity(0.5)),
-              ),
-              defaultSizeBox,
-              Text(
-                'The Dorit Effect',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.copyWith(fontWeight: FontWeight.bold, fontSize: 28),
-              ),
-              defaultSizeBox,
-              Text(
-                'Mark Schatzker',
-                style: Theme.of(context).textTheme.titleMedium,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _buildIconLabel(context, Icons.list, '8 key points'),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  _buildIconLabel(context, Icons.access_time, '15 min'),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  _buildIconLabel(
-                      context, Icons.electric_bolt_outlined, '7 insights')
-                ],
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-            ],
+          const SizedBox(
+            height: 50,
           ),
-          Column(
-            children: [
-              const Icon(Icons.ios_share),
-              SizedBox.fromSize(
-                size: const Size(20, 20),
-              ),
-              const Icon(Icons.vertical_align_bottom_outlined),
-              SizedBox.fromSize(
-                size: const Size(20, 20),
-              ),
-              const Icon(Icons.favorite_border)
-            ],
-          )
+          _buildShareContent(context)
         ],
       ),
     );
   }
 
-  Widget _buildIconLabel(BuildContext context, IconData icon, String title) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(icon),
-        const SizedBox(
-          width: 5,
-        ),
-        Text(
-          title,
-          style: Theme.of(context).textTheme.labelLarge,
-        )
-      ],
-    );
-  }
-
-  Widget _buildInside(BuildContext context) {
-    final l10 = context.l10n;
+  Widget _buildShareContent(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          l10.whatsInside,
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge
-              ?.copyWith(fontWeight: FontWeight.bold, fontSize: 28),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const FittedBox(
+              child: Icon(
+                Icons.electric_bolt_outlined,
+                color: CupertinoColors.activeBlue,
+              ),
+            ),
+            Expanded(
+                child: Text(
+              'Who you are is more important than what you do. If a habit becomes a part of your personality, the chances of you maintaining it are much higher.',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ))
+          ],
         ),
         const SizedBox(
-          height: 10,
+          height: 20,
         ),
-        SizedBox(
-          child: Text(
-            'Explore the science behind flavor manufacturing and its consequences on your health. Get tips on how to limit unhealthy foods and select a plan that suits your needs.',
-            style: Theme.of(context).textTheme.labelLarge,
-            maxLines: 100,
-          ),
-        )
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            _buildButton(context, const Icon(Icons.ios_share), 'Share'),
+            const SizedBox(
+              width: 20,
+            ),
+            _buildButton(context, const Icon(Icons.check), 'Remember')
+          ],
+        ),
       ],
     );
   }
 
-  Widget _buildBottomButton(BuildContext context) {
-    final l10 = context.l10n;
-    return Padding(
-      padding: const EdgeInsets.only(top: 20),
+  Widget _buildButton(BuildContext context, Icon icon, String text) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      decoration: const BoxDecoration(
+        color: CupertinoColors.lightBackgroundGray,
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+      ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Container(
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                color: CupertinoColors.quaternarySystemFill,
-              ),
-              width: 100.w,
-              height: 45.w,
-              child: _buildIconLabel(context, Icons.dehaze_sharp, l10.read)),
-          Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: CupertinoColors.systemBlue,
-            ),
-            width: 220.w,
-            height: 45.w,
-            child:
-            _buildIconLabel(context, Icons.queue_music_sharp, l10.listen),
+          icon,
+          Text(
+            text,
+            style: Theme.of(context).textTheme.bodyMedium,
           )
         ],
       ),

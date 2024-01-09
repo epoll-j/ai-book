@@ -1,6 +1,7 @@
 import 'package:ai_book/components/basic/basic_scaffold.dart';
 import 'package:ai_book/l10n/l10n.dart';
 import 'package:ai_book/page/book/cubit/book_cubit.dart';
+import 'package:ai_book/page/book/view/listen_book_page.dart';
 import 'package:ai_book/page/book/view/read_book_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -446,25 +447,33 @@ class BookPage extends StatelessWidget {
                     textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
                         fontWeight: FontWeight.bold, fontSize: 18.sp))),
           ),
-          Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: CupertinoColors.systemBlue,
-            ),
-            width: 220.w,
-            height: 45.w,
-            child: _buildIconLabel(
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
                 context,
-                const Icon(
-                  Icons.queue_music_sharp,
-                  color: CupertinoColors.lightBackgroundGray,
-                ),
-                l10.listen,
-                textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+                CupertinoPageRoute(builder: (context) => const ListenBookPage()),
+              );
+            },
+            child: Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: CupertinoColors.systemBlue,
+              ),
+              width: 220.w,
+              height: 45.w,
+              child: _buildIconLabel(
+                  context,
+                  const Icon(
+                    Icons.queue_music_sharp,
                     color: CupertinoColors.lightBackgroundGray,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18.sp)),
+                  ),
+                  l10.listen,
+                  textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: CupertinoColors.lightBackgroundGray,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18.sp)),
+            ),
           )
         ],
       ),
